@@ -2,6 +2,13 @@ import logging as logme
 
 def Tweet(config, t):
     if config.Format:
+        t.mentions = [str(item) for item in t.mentions]
+        t.replies_count = str(t.replies_count)
+        t.retweets_count = str(t.retweets_count)
+        t.likes_count = str(t.likes_count)
+        if not isinstance(t.place, str):
+          t.place = str(t.place)
+
         logme.debug(__name__+':Tweet:Format')
         output = config.Format.replace("{id}", t.id_str)
         output = output.replace("{conversation_id}", t.conversation_id)

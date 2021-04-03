@@ -6,6 +6,7 @@ from .user import User
 from .storage import db, elasticsearch, write, panda
 
 import logging as logme
+import ast
 
 follows_list = []
 tweets_list = []
@@ -89,6 +90,7 @@ def _output(obj, output, config, **extra):
             obj.username = obj.username.lower()
             author_list.update({obj.username})
             for dct in obj.mentions:
+                dct = ast.literal_eval(dct)
                 for key, val in dct.items():
                     dct[key] = val.lower()
             for i in range(len(obj.hashtags)):
