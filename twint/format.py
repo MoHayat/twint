@@ -6,6 +6,7 @@ def Tweet(config, t):
         t.replies_count = str(t.replies_count)
         t.retweets_count = str(t.retweets_count)
         t.likes_count = str(t.likes_count)
+        t.quote_url = str(t.quote_url)
         if not isinstance(t.place, str):
           t.place = str(t.place)
 
